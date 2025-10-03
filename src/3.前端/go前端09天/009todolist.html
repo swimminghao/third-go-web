@@ -1,81 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8" />
 	<title>todolist</title>
 	<style type="text/css">
-		.list_con{
-			width:600px;
-			margin:50px auto 0;
-		}
-		.inputtxt{
-			width:550px;
-			height:30px;
-			border:1px solid #ccc;
-			padding:0px;
-			text-indent:10px;			
-		}
-		.inputbtn{
-			width:40px;
-			height:32px;
-			padding:0px;
-			border:1px solid #ccc;
-		}
-		.list{
-			margin:0;
-			padding:0;
-			list-style:none;
-			margin-top:20px;
-		}
-		.list li{
-			height:40px;
-			line-height:40px;
-			border-bottom:1px solid #ccc;
+      .list_con {
+        width: 600px;
+        margin: 50px auto 0;
 		}
 
-		.list li span{
-			float:left;
+      .inputtxt {
+        width: 550px;
+        height: 30px;
+        border: 1px solid #ccc;
+        padding: 0px;
+        text-indent: 10px;
 		}
 
-		.list li a{
-			float:right;
-			text-decoration:none;
-			margin:0 10px;
+      .inputbtn {
+        width: 40px;
+        height: 32px;
+        padding: 0px;
+        border: 1px solid #ccc;
+		}
+
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        margin-top: 20px;
+		}
+
+      .list li {
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #ccc;
+		}
+
+      .list li span {
+        float: left;
+		}
+
+      .list li a {
+        float: right;
+        text-decoration: none;
+        margin: 0 10px;
 		}
 	</style>
 	 <script src="js/react.development.js"></script>
 	 <script src="js/react-dom.development.js"></script>   
 	 <script src="js/babel.min.js"></script>		
+ 
 </head>
+
 <body>
-
 	<div id="root"></div>
-
 	<script type="text/babel">
-		class Todolist extends React.Component {
+         class Todolist extends React.Component{
 			constructor(props){
-				super(props);
+            super(props)
 				this.state = {
-					aList:['学习html','学习css','学习javascript','学习go语言'],
+              aList:['学习java','学习go','学习html','学习typescript'],
 					sTodo:''
 				}
 			}
+
 			fnChange(ev){
 				this.setState({
 					sTodo:ev.target.value
 				})
 			}
-
 			fnAdd(){
 			   this.setState(function(prevState){
-				   // 判断是否为空
 				   if(prevState.sTodo==''){
-					   alert('请输入内容！')
-					   return;
+                alert('请输入内容')
+                return  ;
 				   }
-				   return {aList:[...prevState.aList,prevState.sTodo],sTodo:''}
+                return {aList:[...prevState.aList,prevState.sTodo]}
 			   })
+            
 			}
+
 			fnDel(i){
 				this.setState(prevState=>{
 					let list = [...prevState.aList];
@@ -119,8 +124,8 @@
 				return (
 					<div className="list_con">
 					<h2>To do list</h2>
-						<input type="text" value={this.state.sTodo} id="txt1" className="inputtxt" onChange={this.fnChange.bind(this)} />
-						<input type="button"  value="增加" id="btn1" className="inputbtn" onClick={this.fnAdd.bind(this)} />
+                      <input type="text" value={this.state.sTodo} name="" id="txt1" className="inputtxt" onChange={this.fnChange.bind(this)}/>
+                      <input type="button" name="" value="增加" id="btn1" className="inputbtn" onClick={this.fnAdd.bind(this)}/>
 						
 						<ul id="list" className="list">
 							{
